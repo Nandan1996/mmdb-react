@@ -43,7 +43,9 @@ module.exports = (function(){
     }
     function saveData(){
         fs.writeFile('server/data/movie.json',JSON.stringify(fileData),function(err){
-            console.log(err);
+            if(err){
+                console.log(err);
+            }
         })
     }
     function putMovieHandler(req,res){
