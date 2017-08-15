@@ -26,13 +26,7 @@ module.exports = {
 	plugins: [
 		new ProgressBarPlugin(),
 		new HtmlWebpackPlugin({
-			template: './index.html'
+			template: './index.html',
 		})
 	],
-	devServer:{
-		proxy:{
-			"/api": 'http://localhost:3000'
-		},
-		historyApiFallback: true
-	}
 };

@@ -8,7 +8,10 @@ const common = require('./webpack.common.js');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const webpack = require('webpack');
-module.exports = merge(common,{
+module.exports = merge.smart(common,{
+	entry:{
+		app: ['webpack-hot-middleware/client','./bootstrap']
+	},
 	output: {
 		filename: 'bundle.[name].js',
 		path: resolve('public'),
@@ -29,10 +32,22 @@ module.exports = merge(common,{
 					}
 				}
 			},
+			{ 
+				test: /\.js$/, 
+				loader: 'babel-loader', 
+				exclude: /node_modules/,
+				options:{
+					presets: [
+						["es2015", {"modules": false}],
+						"react","react-hmre"
+					]
+				}
+			}
 		]
 	},
 	plugins: [
 		new ExtractTextPlugin('styles.[name].css'),
+		new webpack.HotModuleReplacementPlugin(),
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify('devlopment')
 		}),

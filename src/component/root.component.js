@@ -4,7 +4,7 @@ import App from './app.component.js';
 class Root extends React.Component{
 	render(){
 		return (
-			<Router forceRefresh>
+			<Router>
 				<App/>
 			</Router>
 		);
