@@ -7,9 +7,9 @@ var devSever = require('./devSever.js');
 var isProduction = process.env.NODE_ENV === 'production';
 var publicPath = path.resolve(__dirname,'../public');
 var app = express();
-
+devSever = devSever(app);
 if(!isProduction){
-    devSever(app);
+    devSever.next();
 }
 else{
     app.use(express.static(publicPath));
@@ -29,9 +29,7 @@ if(isProduction){
     })
 }
 else{
-    app.get('*',function(req,res){
-        res.redirect('/');
-    })
+    devSever.next();
 }
 app.listen(3000,function onStart(){
     console.log("Node server started on 3000");
