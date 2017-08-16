@@ -23,7 +23,6 @@
     "eslint-plugin-react": "^7.1.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "html-webpack-plugin": "^2.30.1",
-    "npm-run-all": "^4.0.2",
     "progress-bar-webpack-plugin": "^1.10.0",
     "rimraf": "^2.6.1",
     "style-loader": "^0.18.2",
@@ -48,7 +47,7 @@
     "build:dev": "webpack --env.dev",
     "dev": "node server/index.js",
     "lint": "eslint --fix .",
-    "prod": "cross-env NODE_ENV=production node server/index.js",
-    "start": "npm-run-all build prod"
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "postinstall": "npm run build"
   }
 }

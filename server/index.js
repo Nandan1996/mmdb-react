@@ -25,7 +25,7 @@ app.use(function(req, res, next) {
 main.init(app);
 if(isProduction){
     app.get('*',function(req,res){
-        res.sendfile(path.resolve(publicPath,'index.html'));
+        res.sendFile(path.resolve(publicPath,'index.html'));
     })
 }
 else{
