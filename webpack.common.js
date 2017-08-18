@@ -9,7 +9,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
 	context: resolve('src'),
 	entry: {
-		app: './bootstrap.js'
+		app: ['babel-polyfill','./bootstrap.js']
 	},
 	module: {
 		loaders: [

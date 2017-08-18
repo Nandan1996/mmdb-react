@@ -10,7 +10,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 module.exports = merge.smart(common,{
 	entry:{
-		app: ['webpack-hot-middleware/client','./bootstrap']
+		app: ['webpack-hot-middleware/client?reload=true','./bootstrap']
 	},
 	output: {
 		filename: 'bundle.[name].js',
