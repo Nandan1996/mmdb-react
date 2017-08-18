@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 import Image from './image.component.js';
 
-class MovieList extends React.Component{
+class MovieList extends React.PureComponent{
 	render(){
 		const {movies} = this.props;
 		return (

@@ -1,13 +1,16 @@
 import React from 'react';
-// import {withRouter} from 'react-router-dom';
-import {default as VisibleMovieList} from '../container/visiblemovielist.container.js';
-import * as api from '../service/api.js';
-class Home extends React.Component{
+import PropTypes from 'prop-types';
+import MovieList from './movielist.component.js';
+class Home extends React.PureComponent{
 	render(){
 		return (
-			<VisibleMovieList getMovies = {api.getMovies}/>
+			<MovieList movies = {this.props.movies}/>
 		);
 	}
 }
 
+
+Home.propTypes = {
+	movies: PropTypes.array.isRequired
+};
 export default Home;

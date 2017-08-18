@@ -1,17 +1,18 @@
 import React from 'react';
-// import {withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
+
 import SearchBox from './searchbox.component.js';
-import * as api from '../service/api.js';
-import VisibleMovieList from '../container/visiblemovielist.container.js';
+import MovieList from './movielist.component.js';
+
 class Search extends React.Component{
-	constructor(props){
-		super(props);
-		this.getData = this.getData.bind(this);
+	shouldComponentUpdate(nextProps){
+		if(nextProps.filter === this.props.filter){
+			return false;
+		}
+		return true;
 	}
-	getData(){
-		const {search} = this.props.location;
-		return api.getMovies(search);
+	componentWillUnmount(){
+		this.props.resetFilter();
 	}
 	render(){
 		return (
@@ -19,13 +20,18 @@ class Search extends React.Component{
 				<div style={{maxWidth:'500px',margin:'auto',marginBottom:'20px'}}>
 					<SearchBox/>
 				</div>
-				<VisibleMovieList getMovies={this.getData}/>
+				<MovieList movies = {this.props.movies}/>
 			</div>
 		);
 	}
 }
 
 Search.propTypes = {
-	location: PropTypes.object
+	movies: PropTypes.array.isRequired,
+	resetFilter: PropTypes.func.isRequired,
+	filter: PropTypes.string
+};
+Search.defaultProps = {
+	filter: ""
 };
 export default Search;
