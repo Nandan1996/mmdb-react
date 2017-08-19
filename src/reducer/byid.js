@@ -2,7 +2,7 @@ import * as types from '../constants/actiontype.js';
 import {combineReducers} from 'redux';
 
 /* eslint no-case-declarations:"off" */
-let byIds = (state ={},action) =>{
+const byIds = (state ={},action) =>{
 	switch(action.type){
 	case types.FETCH_MOVIES_SUCCESS:
 		let nextState = {};
@@ -16,7 +16,7 @@ let byIds = (state ={},action) =>{
 	}
 };
 
-let ids = (state = [],action) =>{
+const ids = (state = [],action) =>{
 	switch(action.type){
 	case types.FETCH_MOVIES_SUCCESS:
 		return action.movies.map(movie => movie.id);
@@ -24,9 +24,22 @@ let ids = (state = [],action) =>{
 		return state;
 	}
 };
+
+const isFetching = (state=false,action) => {
+	switch(action.type){
+	case types.FETCH_MOVIES_REQUEST:
+		return true;
+	case types.FETCH_MOVIES_SUCCESS:
+	case types.FETCH_MOVIES_FAILURE:
+		return false;
+	default:
+		return state;
+	}
+};
 const movies = combineReducers({
 	byIds,
-	ids
+	ids,
+	isFetching
 });
 export default movies;
 
@@ -46,3 +59,5 @@ export const getFilteredMovies = (state,filter) => {
 	});
 	return retVal;
 };
+
+export const getIsFetching = (state) => state.isFetching;

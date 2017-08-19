@@ -11,7 +11,7 @@ class SearchBox extends React.Component{
 	}
 	
 	shouldComponentUpdate(nextProps,nextState){
-		if(nextState === this.state)
+		if(nextState.filter === this.state.filter)
 			return false;
 		return true;
 	}

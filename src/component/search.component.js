@@ -4,17 +4,11 @@ import PropTypes from 'prop-types';
 import SearchBox from './searchbox.component.js';
 import MovieList from './movielist.component.js';
 
-class Search extends React.Component{
-	shouldComponentUpdate(nextProps){
-		if(nextProps.filter === this.props.filter){
-			return false;
-		}
-		return true;
-	}
-	componentWillUnmount(){
-		this.props.resetFilter();
-	}
+class Search extends React.PureComponent{
 	render(){
+		if(this.props.isFetching){
+			return <div className="loader" />;
+		}
 		return (
 			<div>
 				<div style={{maxWidth:'500px',margin:'auto',marginBottom:'20px'}}>
@@ -29,7 +23,8 @@ class Search extends React.Component{
 Search.propTypes = {
 	movies: PropTypes.array.isRequired,
 	resetFilter: PropTypes.func.isRequired,
-	filter: PropTypes.string
+	filter: PropTypes.string,
+	isFetching: PropTypes.bool
 };
 Search.defaultProps = {
 	filter: ""
