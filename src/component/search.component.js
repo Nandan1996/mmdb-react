@@ -22,7 +22,6 @@ class Search extends React.PureComponent{
 
 Search.propTypes = {
 	movies: PropTypes.array.isRequired,
-	resetFilter: PropTypes.func.isRequired,
 	filter: PropTypes.string,
 	isFetching: PropTypes.bool
 };

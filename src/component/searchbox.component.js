@@ -26,10 +26,13 @@ class SearchBox extends React.Component{
 		});
 		return true;
 	}
+	onSubmit(e){
+		e.preventDefault();
+	}
 	render(){
 		return(
 			<div className="sb-wrapper" style={{minWidth:'200px'}}>
-				<form onSubmit = {(e)=>e.preventDefault()}>
+				<form onSubmit = {this.onSubmit}>
 					<button className="sbb" type="submit">
 						<Link to = {`/search/${this.state.filter}`}>
 							<span className="btnw sb">

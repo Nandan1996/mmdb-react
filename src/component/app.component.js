@@ -1,8 +1,8 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
 
-import {Home,Search} from '../container';
-import {Header, Detail} from '../component';
+import {Home,Search,Detail} from '../container';
+import {Header} from '../component';
 import '../styles/index.css';
 export default class App extends React.Component{
 	render(){

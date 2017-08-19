@@ -239,7 +239,7 @@ form:not(:valid) .btn-reset{
 .not-found{
     min-width: 300px;
     margin: auto;
-    width: 300px;
+    text-align: center;
 }
 
 

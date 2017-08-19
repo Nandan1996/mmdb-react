@@ -1,27 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import {withRouter} from 'react-router-dom';
-import MovieModal from './movie.modal.js';
-import * as api from '../service/api.js';
+import {MovieModal, Error} from '../component';
 
 class Detail extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			movie: {}
+			isOpen: false
 		};
 		this.openModal = this.openModal.bind(this);
 		this.onSave = this.onSave.bind(this);
 		this.onClose = this.onClose.bind(this);
+		this.loadData = this.loadData.bind(this);
 	}
-	componentWillMount(){
-		const {id} = this.props.match.params;
-		api.getMovieById(id).then(data => {
-			this.setState({
-				movie:data.movie,
-				isOpen: false
-			});
-		});
+	componentDidMount(){
+		this.loadData();
+	}
+	loadData(){
+		this.props.requestDetails(this.props.id);
 	}
 	onClose(){
 		this.setState({isOpen: false});
@@ -31,13 +27,20 @@ class Detail extends React.Component{
 	}
 
 	onSave(data){
-		api.postMovie(data).then(res => this.setState({movie:res.movie}));
+		this.props.updateMovieDetail(data);
 		this.setState({isOpen:false});
 	}
 	render(){
-		const {movie} = this.state;
+		const {movie} = this.props;
+		if(this.props.isFetching){
+			return <div className="loader"/>;
+		}
 		if(Object.keys(movie).length === 0){
-			return null;
+			return (
+				<Error>
+					<button onClick={this.loadData}>Retry</button>
+				</Error>
+			);
 		}
 		return (
 			<div className="details-wrapper">
@@ -51,7 +54,8 @@ class Detail extends React.Component{
 					<strong>Rating: {movie["vote_average"]}</strong>
 					<button style={{float:'right'}} onClick={this.openModal} className="btn">Edit</button>
 				</div>
-				<MovieModal {...this.state} 
+				<MovieModal {...this.state}
+					movie = {this.props.movie} 
 					onClose = {this.onClose}
 					onSave={this.onSave}/>
 			</div>
@@ -60,7 +64,11 @@ class Detail extends React.Component{
 }
 
 Detail.propTypes = {
-	match: PropTypes.object.isRequired
+	id: PropTypes.string.isRequired,
+	movie: PropTypes.object.isRequired,
+	requestDetails: PropTypes.func.isRequired,
+	isFetching: PropTypes.bool,
+	updateMovieDetail: PropTypes.func.isRequired
 };
 export default Detail;
 

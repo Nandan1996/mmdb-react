@@ -8,4 +8,29 @@ export const loadMovies = () => {
 export const receiveMovies = (movies) =>({
 	type: types.FETCH_MOVIES_SUCCESS,
 	movies
-})
+});
+
+export const requestDetails = (id) => ({
+	type: types.FETCH_DETAIL_REQUEST,
+	id
+});
+
+export const receiveDetails = (movie) => ({
+	type: types.FETCH_DETAILS_SUCCESS,
+	movie
+});
+
+export const updateMovieDetail = (movie) => ({
+	type:types.UPDATE_MOVIE_REQUEST,
+	movie
+});
+
+export const updateMovieSuccess = (movie) => ({
+	type: types.UPDATE_MOVIE_SUCCESS,
+	movie
+});
+
+export const undoMovieDetail = (movie) => ({
+	type: types.UPDATE_MOVIE_FAILURE,
+	movie
+});

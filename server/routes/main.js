@@ -55,7 +55,7 @@ module.exports = (function(){
         });
         var retVal = {movie,error:false};
         if(movieIdx<0){
-            retVal.message = "Request Movie not found to update.";
+            retVal.message = "Requested Movie not found to update.";
             retVal.error = true;
         }
         else{

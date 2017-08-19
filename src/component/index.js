@@ -9,5 +9,6 @@ import MovieModal from './movie.modal.js';
 import Root from './root.component.js';
 import Search from './search.component.js';
 import SearchBox from './searchbox.component.js';
+import Error from './error.component.js';
 
-export {App,Detail,Header,Home,Image,Modal,MovieList,MovieModal,Root,Search,SearchBox};
+export {App,Detail,Header,Home,Image,Modal,MovieList,MovieModal,Root,Search,SearchBox,Error};
