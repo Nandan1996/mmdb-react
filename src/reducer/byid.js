@@ -43,6 +43,7 @@ const movies = combineReducers({
 });
 export default movies;
 
+//selectors
 export const getAllMovies = (state) => {
 	return state.ids.map(id => state.byIds[id]);
 };
