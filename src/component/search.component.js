@@ -6,6 +6,7 @@ import MovieList from './movielist.component.js';
 
 class Search extends React.PureComponent{
 	render(){
+		console.log(this);
 		if(this.props.isFetching){
 			return <div className="loader" />;
 		}

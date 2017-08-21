@@ -20,9 +20,10 @@ export const receiveDetails = (movie) => ({
 	movie
 });
 
-export const updateMovieDetail = (movie) => ({
+export const updateMovieDetail = (movie,old) => ({
 	type:types.UPDATE_MOVIE_REQUEST,
-	movie
+	movie,
+	old
 });
 
 export const updateMovieSuccess = (movie) => ({

@@ -19,9 +19,13 @@ function* getMovieById({id}){
 		yield put({type: types.FETCH_DETAIL_FAILURE});
 	}
 }
-function* updateMovie({movie}){
-	let response = yield call(api.postMovie,movie);
+function* updateMovie({old,movie}){
 	try{
+		let a = 1;
+		if(a<3){
+			throw {a:10};
+		}
+		let response = yield call(api.postMovie,movie);
 		if(response.error){
 			throw response;
 		}
@@ -29,7 +33,7 @@ function* updateMovie({movie}){
 			yield put(updateMovieSuccess(response.movie));
 		}
 	}catch(e){
-		yield put(undoMovieDetail(movie));
+		yield put(undoMovieDetail(old));
 	}
 }
 

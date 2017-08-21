@@ -27,7 +27,7 @@ class Detail extends React.Component{
 	}
 
 	onSave(data){
-		this.props.updateMovieDetail(data);
+		this.props.updateMovieDetail(data,this.props.movie);
 		this.setState({isOpen:false});
 	}
 	render(){

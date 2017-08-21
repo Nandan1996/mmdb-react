@@ -2,11 +2,12 @@ import * as types from '../constants/actiontype.js';
 import {combineReducers} from 'redux';
 
 /* eslint no-case-declarations:"off" */
-const movie = (state ={},action) =>{
+export const movie = (state ={},action) =>{
 	switch(action.type){
 	case types.FETCH_DETAILS_SUCCESS:
 		return action.movie;
-	case types.UPDATE_MOVIE_SUCCESS:
+	case types.UPDATE_MOVIE_REQUEST:
+	case types.UPDATE_MOVIE_FAILURE:
 		const{movie} = action;
 		return Object.assign({},state,movie);
 	case types.FETCH_DETAIL_FAILURE:
@@ -16,7 +17,7 @@ const movie = (state ={},action) =>{
 	}
 };
 
-const isFetching = (state=false,action) => {
+export const isFetching = (state=false,action) => {
 	switch(action.type){
 	case types.FETCH_DETAIL_REQUEST:
 		return true;
