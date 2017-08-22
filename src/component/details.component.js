@@ -42,6 +42,11 @@ class Detail extends React.Component{
 				</Error>
 			);
 		}
+		else if(movie.error){
+			return (
+				<Error title="Not Found" description={movie.message}/>
+			);
+		}
 		return (
 			<div className="details-wrapper">
 				<h3>{movie.title}</h3>

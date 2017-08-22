@@ -9,29 +9,15 @@ function* getMovieById({id}){
 	try{
 		let response = yield call(api.getMovieById,id);
 		yield call(delay,1000);
-		if(response.error){
-			throw response;
-		}
-		else{
-			yield put(receiveDetails(response.movie));
-		}
+		yield put(receiveDetails(response));
 	}catch(e){
 		yield put({type: types.FETCH_DETAIL_FAILURE});
 	}
 }
 function* updateMovie({old,movie}){
 	try{
-		let a = 1;
-		if(a<3){
-			throw {a:10};
-		}
 		let response = yield call(api.postMovie,movie);
-		if(response.error){
-			throw response;
-		}
-		else{
-			yield put(updateMovieSuccess(response.movie));
-		}
+		yield put(updateMovieSuccess(response));
 	}catch(e){
 		yield put(undoMovieDetail(old));
 	}
@@ -44,4 +30,4 @@ function* watchDetailRequest(){
 	yield takeLatest(types.FETCH_DETAIL_REQUEST,getMovieById);
 }
 
-export {watchDetailRequest,watchUpdateRequest};
+export {watchDetailRequest,watchUpdateRequest,updateMovie,getMovieById};

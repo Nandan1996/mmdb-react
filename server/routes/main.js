@@ -36,9 +36,6 @@ module.exports = (function(){
         if(!item){
             item = {error:true,message:"Movie not found with this id"};
         }
-        else{
-            item = {movie: item,error:false};
-        }
         res.send(item);
     }
     function saveData(){
@@ -53,7 +50,7 @@ module.exports = (function(){
         var movieIdx = movies.findIndex(function(value){
             return value.id == movie.id;
         });
-        var retVal = {movie,error:false};
+        var retVal = {};
         if(movieIdx<0){
             retVal.message = "Requested Movie not found to update.";
             retVal.error = true;
@@ -62,7 +59,7 @@ module.exports = (function(){
             var myMovie = Object.assign(movies[movieIdx],movie);
             movies[movieIdx] = myMovie;
             fileData["movies"] = movies;
-            retVal['movie'] = myMovie;
+            retVal = myMovie;
             saveData();
         }
         res.send(retVal);

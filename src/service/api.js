@@ -28,7 +28,7 @@ export const postMovie = (movie) => {
 		})
 	}).then(response => {
 		if(!response.ok){
-			throw new Error('Server responded with status ${response.status}',response);
+			throw response;
 		}
 		return response.json();
 	});
