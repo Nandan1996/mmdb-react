@@ -8,7 +8,6 @@ import * as api from '../service';
 function* getMovieById({id}){
 	try{
 		let response = yield call(api.getMovieById,id);
-		yield call(delay,1000);
 		yield put(receiveDetails(response));
 	}catch(e){
 		yield put({type: types.FETCH_DETAIL_FAILURE});

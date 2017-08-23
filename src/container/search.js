@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import {Search} from '../component';
+import Search from '../component/search.js';
 import {getFilteredMovies,getIsFetching} from '../reducer';
 
 const mapStateToProps = (state,{match}) =>{

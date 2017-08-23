@@ -4,12 +4,11 @@ import {delay} from 'redux-saga';
 import {receiveMovies} from '../actions';
 import * as types from '../constants/actiontype';
 import * as api from '../service';
-import {watchDetailRequest,watchUpdateRequest} from './detail.saga.js';
+import {watchDetailRequest,watchUpdateRequest} from './detail.js';
 
 function* fetchAllMovies(){
 	try{
 		let movies = yield call(api.getMovies);
-		yield call(delay,2000);
 		yield put(receiveMovies(movies));
 	}catch(e){
 		console.log(e);

@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 
 import {requestDetails,updateMovieDetail} from '../actions';
-import {Detail} from '../component';
+import Detail from '../component/details.js';
 import {getDetails,getIsFetchingDetails} from '../reducer';
 
 const mapStateToProps = (state,{match}) =>({

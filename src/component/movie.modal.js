@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Modal from './modal.component.js';
+import {Modal} from '../component';
 
 export default class MovieModal extends React.Component{
 	constructor(props)    {

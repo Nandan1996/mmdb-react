@@ -1,5 +1,5 @@
-import Home from './home.container';
-import Search from './search.container.js';
-import Detail from './details.container.js';
+import Home from './home.js';
+import Search from './search.js';
+import Detail from './details.js';
 
 export {Home,Search,Detail};
