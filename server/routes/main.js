@@ -34,7 +34,7 @@ module.exports = (function(){
         });
         
         if(!item){
-            item = {error:true,message:"Movie not found with this id"};
+            item = {};
         }
         res.send(item);
     }
@@ -51,11 +51,7 @@ module.exports = (function(){
             return value.id == movie.id;
         });
         var retVal = {};
-        if(movieIdx<0){
-            retVal.message = "Requested Movie not found to update.";
-            retVal.error = true;
-        }
-        else{
+        if(movieIdx>=0){
             var myMovie = Object.assign(movies[movieIdx],movie);
             movies[movieIdx] = myMovie;
             fileData["movies"] = movies;

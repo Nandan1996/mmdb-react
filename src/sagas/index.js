@@ -8,10 +8,6 @@ import {watchDetailRequest,watchUpdateRequest} from './detail.js';
 function* fetchAllMovies(){
 	try{
 		let movies = yield call(api.getMovies);
-		// let a = 3;
-		// if(a>1){
-		// 	throw {};
-		// }
 		yield put(receiveMovies(movies));
 	}catch(e){
 		yield put(fetchMoviesFailed("Check your network connection."));

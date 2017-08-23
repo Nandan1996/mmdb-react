@@ -28,7 +28,7 @@ export const postMovie = (movie) => {
 		})
 	}).then(response => {
 		if(!response.ok){
-			throw response;
+			throw {message:"could not update your movie."};
 		}
 		return response.json();
 	});

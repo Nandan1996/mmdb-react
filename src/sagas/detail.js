@@ -1,23 +1,28 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-
-import {receiveDetails,updateMovieSuccess,undoMovieDetail} from '../actions';
+import {delay} from 'redux-saga';
+import * as actions from '../actions';
 import * as types from '../constants/actiontype';
 import * as api from '../service';
 
 function* getMovieById({id}){
 	try{
 		let response = yield call(api.getMovieById,id);
-		yield put(receiveDetails(response));
+		yield put(actions.receiveDetails(response));
 	}catch(e){
-		yield put({type: types.FETCH_DETAIL_FAILURE});
+		yield put(actions.fetchDetailFailed("Check your network connection."));
 	}
 }
-function* updateMovie({old,movie}){
+function* updateMovie({movie}){
 	try{
+		yield call(delay,1000);
+		let a = 2;
+		if(a>1){
+			throw {};
+		}
 		let response = yield call(api.postMovie,movie);
-		yield put(updateMovieSuccess(response));
+		yield put(actions.updateMovieSuccess(response));
 	}catch(e){
-		yield put(undoMovieDetail(old));
+		yield put(actions.updateMovieFailed("Update Failed!, may be due to network connection."));
 	}
 }
 

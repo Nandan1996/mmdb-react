@@ -19,3 +19,4 @@ export const getFetchingError = (state) => fromById.getErrorMessage(state.movies
 
 export const getIsFetchingDetails = (state) => fromDetail.getIsFetchingDetails(state.details);
 export const getDetails = (state) => fromDetail.getDetails(state.details);
+export const getDetailsMessage = (state) => fromDetail.getDetailsMessage(state.details);

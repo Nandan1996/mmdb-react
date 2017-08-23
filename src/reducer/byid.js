@@ -38,7 +38,6 @@ export const isFetching = (state=false,action) => {
 };
 export const errorMessage = (state = null,action) => {
 	switch(action.type){
-	case types.FETCH_MOVIES_SUCCESS:
 	case types.FETCH_MOVIES_REQUEST:
 		return null;
 	case types.FETCH_MOVIES_FAILURE:

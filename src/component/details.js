@@ -31,24 +31,26 @@ class Detail extends React.Component{
 		this.setState({isOpen:false});
 	}
 	render(){
-		const {movie} = this.props;
+		const {movie,message} = this.props;
 		if(this.props.isFetching){
 			return <div className="loader"/>;
 		}
 		if(Object.keys(movie).length === 0){
-			return (
-				<Error>
+			if(message){
+				return (<Error 
+					title="Could not load Details of your movie." 
+					description={message}>
 					<button onClick={this.loadData}>Retry</button>
-				</Error>
-			);
+				</Error>);
+			}
+			else{
+				return (<Error
+					title="Not Found!" description="The data you are looking for does not exist."/>);
+			}
 		}
-		else if(movie.error){
-			return (
-				<Error title="Not Found" description={movie.message}/>
-			);
-		}
-		return (
+		return (			
 			<div className="details-wrapper">
+				<span style={{color:'red'}}>{message || ""}</span>
 				<h3>{movie.title}</h3>
 				<div className="avatar">
 					<img src={`${movie.url}/${"w500"}${movie["backdrop_path"]}`} alt={`${movie.title} avatar`}/>
@@ -60,7 +62,7 @@ class Detail extends React.Component{
 					<button style={{float:'right'}} onClick={this.openModal} className="btn">Edit</button>
 				</div>
 				<MovieModal {...this.state}
-					movie = {this.props.movie} 
+					movie = {movie} 
 					onClose = {this.onClose}
 					onSave={this.onSave}/>
 			</div>
@@ -73,7 +75,8 @@ Detail.propTypes = {
 	movie: PropTypes.object.isRequired,
 	requestDetails: PropTypes.func.isRequired,
 	isFetching: PropTypes.bool,
-	updateMovieDetail: PropTypes.func.isRequired
+	updateMovieDetail: PropTypes.func.isRequired,
+	message: PropTypes.string
 };
 export default Detail;
 
