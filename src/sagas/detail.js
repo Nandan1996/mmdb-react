@@ -1,5 +1,4 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import {delay} from 'redux-saga';
 
 import {receiveDetails,updateMovieSuccess,undoMovieDetail} from '../actions';
 import * as types from '../constants/actiontype';

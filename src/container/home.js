@@ -1,11 +1,12 @@
 import {connect} from 'react-redux';
 
 import Home from '../component/home.js';
-import {getAllMovies,getIsFetching} from '../reducer';
+import {getAllMovies,getIsFetching,getFetchingError} from '../reducer';
+import {loadMovies} from '../actions';
 
 const mapStateToProps = (state) =>({
 	movies: getAllMovies(state),
-	isFetching: getIsFetching(state)
+	isFetching: getIsFetching(state),
+	errorMessage: getFetchingError(state)
 });
-console.log("Home container=======");
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps,{loadMovies})(Home);

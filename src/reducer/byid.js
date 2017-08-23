@@ -36,10 +36,22 @@ export const isFetching = (state=false,action) => {
 		return state;
 	}
 };
+export const errorMessage = (state = null,action) => {
+	switch(action.type){
+	case types.FETCH_MOVIES_SUCCESS:
+	case types.FETCH_MOVIES_REQUEST:
+		return null;
+	case types.FETCH_MOVIES_FAILURE:
+		return action.message;
+	default:
+		return state;
+	}
+};
 const movies = combineReducers({
 	byIds,
 	ids,
-	isFetching
+	isFetching,
+	errorMessage
 });
 export default movies;
 
@@ -62,3 +74,4 @@ export const getFilteredMovies = (state,filter) => {
 };
 
 export const getIsFetching = (state) => state.isFetching;
+export const getErrorMessage = (state) => state.errorMessage;

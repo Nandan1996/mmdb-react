@@ -15,6 +15,7 @@ export const getFilteredMovies =(state,filter) => {
 
 export const getAllMovies = (state) => fromById.getAllMovies(state.movies);
 export const getIsFetching = (state) => fromById.getIsFetching(state.movies);
+export const getFetchingError = (state) => fromById.getErrorMessage(state.movies);
 
 export const getIsFetchingDetails = (state) => fromDetail.getIsFetchingDetails(state.details);
 export const getDetails = (state) => fromDetail.getDetails(state.details);

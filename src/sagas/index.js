@@ -1,7 +1,6 @@
 import { call, put, takeLatest,all } from 'redux-saga/effects';
-import {delay} from 'redux-saga';
 
-import {receiveMovies} from '../actions';
+import {receiveMovies,fetchMoviesFailed} from '../actions';
 import * as types from '../constants/actiontype';
 import * as api from '../service';
 import {watchDetailRequest,watchUpdateRequest} from './detail.js';
@@ -9,9 +8,13 @@ import {watchDetailRequest,watchUpdateRequest} from './detail.js';
 function* fetchAllMovies(){
 	try{
 		let movies = yield call(api.getMovies);
+		// let a = 3;
+		// if(a>1){
+		// 	throw {};
+		// }
 		yield put(receiveMovies(movies));
 	}catch(e){
-		console.log(e);
+		yield put(fetchMoviesFailed("Check your network connection."));
 	}
 }
 

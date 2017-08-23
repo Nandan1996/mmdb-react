@@ -1,10 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 class SearchBox extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			filter: ""
+			filter: this.props.filter
 		};
 		this.onChangeHandler = this.onChangeHandler.bind(this);
 		this.resetState = this.resetState.bind(this);
@@ -46,7 +47,7 @@ class SearchBox extends React.Component{
 					<div className="fst-child">
 						<button type="reset" className="sbb btn-reset" onClick={this.resetState}><span>X</span></button>
 						<div className="sbib">
-							<input type="text" name="filter" title="search"className="sbic" onChange = {this.onChangeHandler} required/>
+							<input type="text" name="filter" title="search"className="sbic" value={this.state.filter} onChange = {this.onChangeHandler} required/>
 						</div>
 					</div>
 				</form>
@@ -55,3 +56,9 @@ class SearchBox extends React.Component{
 	}
 }
 export default SearchBox;
+SearchBox.propTypes = {
+	filter: PropTypes.string
+};
+SearchBox.defaultProps = {
+	filter: ""
+};

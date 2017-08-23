@@ -9,7 +9,10 @@ export const receiveMovies = (movies) =>({
 	type: types.FETCH_MOVIES_SUCCESS,
 	movies
 });
-
+export const fetchMoviesFailed = (message) => ({
+	type: types.FETCH_MOVIES_FAILURE,
+	message
+});
 export const requestDetails = (id) => ({
 	type: types.FETCH_DETAIL_REQUEST,
 	id
