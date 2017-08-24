@@ -50,7 +50,7 @@ class Detail extends React.Component{
 		}
 		return (			
 			<div className="details-wrapper">
-				<span style={{color:'red'}}>{message || ""}</span>
+				<span style={{color:'red'}}>{!this.state.isOpen && message || ""}</span>
 				<h3>{movie.title}</h3>
 				<div className="avatar">
 					<img src={`${movie.url}/${"w500"}${movie["backdrop_path"]}`} alt={`${movie.title} avatar`}/>

@@ -1,5 +1,4 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import {delay} from 'redux-saga';
 import * as actions from '../actions';
 import * as types from '../constants/actiontype';
 import * as api from '../service';
@@ -14,15 +13,10 @@ function* getMovieById({id}){
 }
 function* updateMovie({movie}){
 	try{
-		yield call(delay,1000);
-		let a = 2;
-		if(a>1){
-			throw {};
-		}
 		let response = yield call(api.postMovie,movie);
 		yield put(actions.updateMovieSuccess(response));
 	}catch(e){
-		yield put(actions.updateMovieFailed("Update Failed!, may be due to network connection."));
+		yield put(actions.updateMovieFailed("Update Failed! May be due to network connection."));
 	}
 }
 

@@ -1,2 +1,4 @@
 public/
 server/
+*.test.js
+__mocks__/

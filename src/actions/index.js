@@ -22,10 +22,10 @@ export const receiveDetails = (movie) => ({
 	type: types.FETCH_DETAILS_SUCCESS,
 	movie
 });
-export const fetchDetailFailed = (message) => {
-	types.FETCH_DETAIL_FAILURE,
-	message;
-};
+export const fetchDetailFailed = (message) => ({
+	type: types.FETCH_DETAIL_FAILURE,
+	message
+});
 export const updateMovieDetail = (movie,old) => ({
 	type:types.UPDATE_MOVIE_REQUEST,
 	movie,
