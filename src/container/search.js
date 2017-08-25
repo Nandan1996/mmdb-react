@@ -8,7 +8,7 @@ const mapStateToProps = (state,{match}) =>{
 	
 	const filter = match.params.filter || "";
 	return {
-		movies: getFilteredMovies(state,filter),
+		movies: getFilteredMovies(state,{filter}),
 		isFetching: getIsFetching(state),
 		errorMessage: getFetchingError(state),
 		filter

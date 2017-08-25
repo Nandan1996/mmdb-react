@@ -55,22 +55,5 @@ const movies = combineReducers({
 export default movies;
 
 //selectors
-export const getAllMovies = (state) => {
-	return state.ids.map(id => state.byIds[id]);
-};
-
-export const getFilteredMovies = (state,filter) => {
-	if(filter == ""){
-		return getAllMovies(state);
-	}
-	const retVal = [];
-	const byIds = state.byIds;
-	state.ids.forEach(id =>{
-		if(byIds[id]["title"].toLowerCase().search(filter.toLowerCase()) >= 0)
-			retVal.push(byIds[id]);
-	});
-	return retVal;
-};
-
 export const getIsFetching = (state) => state.isFetching;
 export const getErrorMessage = (state) => state.errorMessage;

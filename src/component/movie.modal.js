@@ -21,7 +21,7 @@ export default class MovieModal extends React.Component{
 	}
 	onSave(e){
 		e.preventDefault();
-		this.props.onSave(this.state);
+		this.props.onSave(this.state.movie);
 	}
 	render(){
 		const {isOpen,onClose} = this.props;

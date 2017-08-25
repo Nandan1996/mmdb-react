@@ -68,18 +68,4 @@ describe('ById reducers and selectors',function(){
 			expect(fromById.isFetching(true,fromAction.fetchMoviesFailed(""))).toBe(false);
 		});
 	});
-
-	describe('selectors',() =>{
-		const movies = [{id:1,title:"Spider-man",rating:8.4}, {id:2,title:"x-men",rating:9.2}];
-		test('getAllMovies',() => {
-			expect(fromById.getAllMovies(state)).toEqual(movies);
-		});
-
-		test('getFilteredMovies else part',() => {
-			expect(fromById.getFilteredMovies(state,"m")).toEqual(movies);
-		});
-		test('getFilteredMovies if part',() => {
-			expect(fromById.getFilteredMovies(state,"")).toEqual(movies);
-		});
-	});
 });

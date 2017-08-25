@@ -26,10 +26,9 @@ export const fetchDetailFailed = (message) => ({
 	type: types.FETCH_DETAIL_FAILURE,
 	message
 });
-export const updateMovieDetail = (movie,old) => ({
+export const updateMovieDetail = (movie) => ({
 	type:types.UPDATE_MOVIE_REQUEST,
-	movie,
-	old
+	movie
 });
 
 export const updateMovieSuccess = (movie) => ({
