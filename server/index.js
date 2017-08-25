@@ -1,6 +1,7 @@
 var express = require('express');
 var bp = require('body-parser');
 var path = require('path');
+var opn = require('opn');
 var main = require('./routes/main.js');
 var devSever = require('./devSever.js');
 
@@ -33,4 +34,5 @@ else{
 }
 app.listen(3000,function onStart(){
     console.log("Node server started on 3000");
+    opn('http://localhost:3000');
 });
