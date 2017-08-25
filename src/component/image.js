@@ -2,12 +2,12 @@ import React from 'react';
 import {default as PropTypes} from 'prop-types';
 class Image extends React.Component{
 	render(){
-		const {movie,width,height} = this.props;
+		const {movie} = this.props;
 		const src = `${movie.url}/${"w342"}${movie.backdrop_path}`;
 		return (
 			<div className="card-container" title="click for detail">
 				<figure className="card">
-					<img src={src} alt={movie.original_title} height={height} width={width}/>
+					<img src={src} alt={movie.original_title} className="img-responsive"/>
 					<figcaption className="card-footer">
 						<div>
 							<h3 className="movie-title">{movie.title}</h3>
@@ -20,14 +20,9 @@ class Image extends React.Component{
 		);
 	}
 }
-Image.defaultProps = {
-	height: "150px",
-	width: "342px"
-};
+
 Image.propTypes = {
 	movie:PropTypes.object.isRequired,
-	width: PropTypes.string,
-	height: PropTypes.string,
 	url: PropTypes.string
 };
 export default Image;

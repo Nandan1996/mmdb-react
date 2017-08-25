@@ -9,7 +9,7 @@ class MovieList extends React.PureComponent{
 		const {movies} = this.props;
 		return (
 			<div className="movie-list">
-				{movies.map(movie => <Link key={movie.id} to={`/movie/${movie.id}`}><Image movie={movie}/></Link>)}
+				{movies.map(movie => <div key={movie.id} className="flex-item"><Link to={`/movie/${movie.id}`}><Image movie={movie}/></Link></div>)}
 			</div>
 		);
 	}
