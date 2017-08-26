@@ -193,10 +193,11 @@ form:not(:valid) .btn-reset{
     display: flex;
     position:  fixed;
     width: 100%;
+    flex-wrap: wrap;
     top: 0px;
     left: 0px;
     background: #101010;
-    height: 50px;
+    min-height: 50px;
     z-index: 1000;
     color: #fff;
     justify-content: center;
@@ -281,4 +282,10 @@ form:not(:valid) .btn-reset{
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+@media screen and (max-width:365px){
+    body{
+        margin-top: 125px;
+    }
 }
