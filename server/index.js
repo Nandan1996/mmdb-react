@@ -8,8 +8,8 @@ var devSever = require('./devSever.js');
 var isProduction = process.env.NODE_ENV === 'production';
 var publicPath = path.resolve(__dirname,'../public');
 var app = express();
-devSever = devSever(app);
 if(!isProduction){
+    devSever = devSever(app);
     devSever.next();
 }
 else{
@@ -34,5 +34,5 @@ else{
 }
 app.listen(3000,function onStart(){
     console.log("Node server started on 3000");
-    opn('http://localhost:3000');
+    if(!isProduction) opn('http://localhost:3000');
 });

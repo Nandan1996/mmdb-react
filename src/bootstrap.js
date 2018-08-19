@@ -5,7 +5,6 @@ import {Provider} from 'react-redux';
 import {Root} from './component';
 import createStore from './configureStore.js';
 const store = createStore();
-
 ReactDOM.render(<Provider store={store}>
 	<Root/>
 </Provider>,
