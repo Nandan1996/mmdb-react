@@ -5,6 +5,7 @@ var opn = require('opn');
 var main = require('./routes/main.js');
 var devSever = require('./devSever.js');
 
+var port = process.env.PORT || 3000;
 var isProduction = process.env.NODE_ENV === 'production';
 var publicPath = path.resolve(__dirname,'../public');
 var app = express();
@@ -32,7 +33,7 @@ if(isProduction){
 else{
     devSever.next();
 }
-app.listen(3000,function onStart(){
-    console.log("Node server started on 3000");
+app.listen(port,function onStart(){
+    console.log(`Server is up on ${port}`);
     if(!isProduction) opn('http://localhost:3000');
 });
